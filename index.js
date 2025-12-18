@@ -65,6 +65,8 @@ async function showFriends(serverName, showIds) {
   client.on('ready', async () => {
     console.log(`Logged in as ${client.user.username}`);
 
+    var count = 0;
+
     try {
       var guild = client.guilds.cache.get(serverName);
       if (!guild) {
@@ -89,6 +91,7 @@ async function showFriends(serverName, showIds) {
         const relationships = await response.json();
 
         if (relationships.length > 0) {
+          count += 1;
           console.log();
           const name = member.nickname ? member.nickname : member.user.globalName;
           printUser(member.nickname, member.user.globalName, member.user.username, member.id, showIds, false);
@@ -100,6 +103,8 @@ async function showFriends(serverName, showIds) {
           }
         }
       }
+
+      console.log(chalk.green(count) + " users with mutuals found!");
 
     } catch (error) {
       console.error('Error:', error.message);
