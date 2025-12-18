@@ -24,3 +24,6 @@ Now, you can find people you have mutual friends with! Run
 discord-mutuals friends <serverName> [--show-ids]
 ```
 and it will print all the users you have mutual friends with, and who those mutuals are.
+
+
+_Open source on [GitHub](https://github.com/EerierGosling/discord-mutuals), published on [npm](https://www.npmjs.com/package/discord-mutuals)._
