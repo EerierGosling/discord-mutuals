@@ -56,7 +56,7 @@ function printUser(nickname, globalName, username, id, showIds, isListItem) {
   console.log((isListItem ? "  - " : "") + cyanColor(name) + grayColor(" (username: ") + blueColor(username) + (showIds ? grayColor(", id: ") + grayColor(id) : "") + grayColor(")"));
 }
 
-async function showFriends(serverName, showIds) {
+async function showFriends(serverName, showIds, excludeInServer) {
 
   const config = loadConfig();
 
@@ -88,7 +88,18 @@ async function showFriends(serverName, showIds) {
           }
         });
 
-        const relationships = await response.json();
+        var relationships = await response.json();
+
+        if (excludeInServer) {
+          const filteredRelationships = [];
+          for (const relationship of relationships) {
+            const isInServer = guildMembers.has(relationship.id);
+            if (!isInServer) {
+              filteredRelationships.push(relationship);
+            }
+          }
+          relationships = filteredRelationships;
+        }
 
         if (relationships.length > 0) {
           count += 1;
@@ -124,12 +135,13 @@ async function main() {
     return;
   }
   if (args[0] === 'friends') {
-    await showFriends(args[1], args.includes('--show-ids'));
+    await showFriends(args[1], args.includes('--show-ids'), args.includes('--exclude-in-server'));
     return;
   }
-  console.log('Usage: discord-mutuals set-token | friends <serverName> [--show-ids]');
+  console.log('Usage: discord-mutuals set-token | friends <serverName> [--exclude-in-server] [--show-ids]');
   console.log('  set-token <token>       Set your Discord token');
   console.log('  friends <serverName>    Show friends in the specified server (serverName can be the server name or ID)');
+  console.log('    --exclude-in-server   Exclude mutual friends who are in the server');
   console.log('    --show-ids            Show user IDs');
   rl.close();
 }
