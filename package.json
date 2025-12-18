@@ -1,6 +1,6 @@
 {
   "name": "discord-mutuals",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CLI tool to find mutual friends on Discord servers",
   "main": "index.js",
   "bin": {
