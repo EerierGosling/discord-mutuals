@@ -1,0 +1,24 @@
+{
+  "name": "discord-mutuals",
+  "version": "1.0.0",
+  "description": "CLI tool to find mutual friends on Discord servers",
+  "main": "index.js",
+  "bin": {
+    "discord-mutuals": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "discord",
+    "cli",
+    "mutuals",
+    "friends"
+  ],
+  "author": "Soifia Egan",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "discord.js-selfbot-v13": "^3.7.1"
+  }
+}
