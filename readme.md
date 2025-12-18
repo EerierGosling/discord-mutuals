@@ -17,6 +17,7 @@ First, you need to add your Discord token. You can find this by opening Discord 
 ```sh
 discord-mutuals add-token <your-discord-token>
 ```
+which will save your token to your config.
 
 Now, you can find people you have mutual friends with! Run
 ```sh
