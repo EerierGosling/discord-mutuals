@@ -15,7 +15,7 @@ yarn global add discord-mutuals
 
 First, you need to add your Discord token. You can find this by opening Discord on the web, looking at nearly any `Fetch/XHR` request, and grabbing the string after `Authorization` in `Request Headers`. Save it by running
 ```sh
-discord-mutuals add-token <your-discord-token>
+discord-mutuals set-token <your-discord-token>
 ```
 which will save your token to your config.
 
